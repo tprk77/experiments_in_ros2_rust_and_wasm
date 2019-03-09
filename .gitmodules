@@ -4,3 +4,12 @@
 [submodule "ros2_ws/src/ros2_rust"]
 	path = ros2_ws/src/ros2_rust
 	url = https://github.com/lelongg/ros2_rust.git
+[submodule "ros2_ws/src/common_interfaces"]
+	path = ros2_ws/src/common_interfaces
+	url = git@github.com:ros2/common_interfaces.git
+[submodule "ros2_ws/src/rcl_interfaces"]
+	path = ros2_ws/src/rcl_interfaces
+	url = git@github.com:ros2/rcl_interfaces.git
+[submodule "ros2_ws/src/rosidl_defaults"]
+	path = ros2_ws/src/rosidl_defaults
+	url = git@github.com:ros2/rosidl_defaults.git
