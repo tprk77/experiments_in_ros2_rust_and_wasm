@@ -1,0 +1,3 @@
+[submodule "extern/wasmer"]
+	path = extern/wasmer
+	url = git@github.com:tprk77/wasmer.git
