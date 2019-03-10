@@ -10,7 +10,7 @@ think it's an interesting concept with great potential.
 
 ## Organization ##
 
-**ROS2 WASM App:** `ros2_wasm_app_rust`
+**ROS2 WASM App:** `ros2_wasm_app_rust` and `ros2_wasm_app_cpp`
 
 **ROS2 WASM Host:** `ros2_ws/src/ros2_rust_wasm`
 
@@ -37,10 +37,61 @@ currently possible in the master branch. Unfortunately my fork is already out of
 date and will not be merged upstream. Wasmer is a very exciting project and is
 under heavy, active development.
 
+**Emscripten:** `extern/emsdk`
+
+Emscripten is a pretty mature project, it's basically a C and C++ compiler that
+targets WASM. I'm using it to compile the C++ WASM app. Emscripten usually
+targets web browsers, but can be made to work with Wasmer. See the `Makefile` in
+`ros2_wasm_app_cpp` for details on how I do that.
+
 ## Setup ##
+
+If you haven't install Rust yet, you can do that easily with [`rustup`][1]!
+
+```text
+# See also: https://rustup.rs/
+curl https://sh.rustup.rs -sSf | sh
+```
+
+You will need to install ROS2. I recommend following the [instructions to install
+Debian packages][2]. Here's some summary commands:
+
+```text
+sudo apt update && sudo apt install curl gnupg2 lsb-release
+curl http://repo.ros2.org/repos.key | sudo apt-key add -
+sudo apt update
+sudo apt install ros-crystal-desktop
+```
+
+You will need to initialize and update all of the submodules in this repo. This
+will get the ROS2 Rust Client, Wasmer, Emscripten, etc, setup in the correct
+locations. The following command will do that:
+
+```text
+git submodule update --init --recursive
+```
+
+Once that's done, you need to [setup Emscripten][3]:
+
+```text
+cd extern/emsdk
+./emsdk update
+./emsdk install latest
+./emsdk activate latest
+```
+
+(Note that the `emsdk` submodule will appear "dirty" after setting up
+Emscripten, but you should just ignore that.)
+
+## Building ##
 
 TODO
 
+<!-- References -->
+
+[1]: https://rustup.rs/
+[2]: https://index.ros.org/doc/ros2/Installation/Linux-Install-Debians/
+[3]: https://emscripten.org/docs/getting_started/downloads.html
 
 <!-- Local Variables: -->
 <!-- fill-column: 80 -->
