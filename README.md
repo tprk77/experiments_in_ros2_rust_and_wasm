@@ -85,6 +85,34 @@ Emscripten, but you should just ignore that.)
 
 ## Building ##
 
+You will need to build the ROS2 workspace with Colcon. Please be aware that the
+`ros2_rust` build tools are not really working correctly at the moment.
+Iterative builds will use stale sources, so you must do a clean build every
+time. (I guess the issue has to do with CMake copying files for Cargo.)
+
+```text
+cd ros2_ws
+source /opt/ros/crystal/setup.bash
+rm -rf build install log && colcon build
+```
+
+You can then build the Rust app:
+
+```text
+cd ros2_wasm_app_rust
+cargo build --release
+```
+
+And finally the C++ app:
+
+```text
+cd ros2_wasm_app_cpp
+source ../extern/emsdk/emsdk_env.sh
+make
+```
+
+## Running ##
+
 TODO
 
 <!-- References -->
