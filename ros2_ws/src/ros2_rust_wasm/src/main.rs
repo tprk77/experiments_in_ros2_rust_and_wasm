@@ -66,7 +66,7 @@ fn main() {
     // We need to inject the data we want to use into the VM context. This code is adapted form
     // `run_emscripten_instance` which adds some Emscripten data to the context. (Note that we can't
     // use that function if want to use custom data, because it will overwrite what's there.)
-    let mut ros_data = ros::RosData::new();
+    let mut ros_data = ros::RosData::new(&mut instance as *mut wasmer_runtime::Instance);
     let ros_data_ptr = &mut ros_data as *mut _ as *mut c_void;
     instance.context_mut().data = ros_data_ptr;
     // Call our exported function!
