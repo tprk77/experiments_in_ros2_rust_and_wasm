@@ -113,7 +113,34 @@ make
 
 ## Running ##
 
-TODO
+At the moment, I've only implemented publisher apps, no subscriber apps. You
+will need to run the native example subscriber to see the published messages.
+
+```text
+cd ros2_ws
+source install/setup.bash
+ros2 run rclrs_examples rclrs_subscriber &
+```
+
+You can then run either of the publisher apps:
+
+```text
+cd ros2_ws
+source install/setup.bash
+
+# Run Rust in WASM!
+ros2 run ros2_rust_wasm ros2_rust_wasm -w \
+    ../ros2_wasm_app_rust/target/wasm32-unknown-unknown/release/ros2_wasm_app_rust.wasm
+```
+
+```text
+cd ros2_ws
+source install/setup.bash
+
+# Run C++ in WASM!
+ros2 run ros2_rust_wasm ros2_rust_wasm -w \
+    ../ros2_wasm_app_cpp/build/ros2_wasm_app_cpp.wasm
+```
 
 <!-- References -->
 
