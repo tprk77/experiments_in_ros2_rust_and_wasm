@@ -3,7 +3,7 @@
 	url = git@github.com:tprk77/wasmer.git
 [submodule "ros2_ws/src/ros2_rust"]
 	path = ros2_ws/src/ros2_rust
-	url = https://github.com/lelongg/ros2_rust.git
+	url = https://github.com/tprk77/ros2_rust.git
 [submodule "ros2_ws/src/common_interfaces"]
 	path = ros2_ws/src/ros2/common_interfaces
 	url = git@github.com:ros2/common_interfaces.git
