@@ -1,0 +1,4 @@
+[[package]]
+name = "ros2_wasm_app_rust_subscriber"
+version = "0.1.0"
+

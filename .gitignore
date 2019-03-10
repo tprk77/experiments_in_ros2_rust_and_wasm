@@ -5,6 +5,7 @@
 
 # Cargo Build
 /ros2_wasm_app_rust/target/
+/ros2_wasm_app_rust_subscriber/target/
 
 # C++ Build
 /ros2_wasm_app_cpp/build/

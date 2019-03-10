@@ -1,0 +1,13 @@
+[package]
+name = "ros2_wasm_app_rust_subscriber"
+version = "0.1.0"
+authors = ["Tim Perkins <code@tprk77.net>"]
+edition = "2018"
+publish = false
+
+[lib]
+name = "ros2_wasm_app_rust_subscriber"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
