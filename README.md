@@ -96,10 +96,15 @@ source /opt/ros/crystal/setup.bash
 rm -rf build install log && colcon build
 ```
 
-You can then build the Rust app:
+You can then build the Rust apps:
 
 ```text
 cd ros2_wasm_app_rust
+cargo build --release
+```
+
+```text
+cd ros2_wasm_app_rust_subscriber
 cargo build --release
 ```
 
@@ -113,33 +118,59 @@ make
 
 ## Running ##
 
-At the moment, I've only implemented publisher apps, no subscriber apps. You
-will need to run the native example subscriber to see the published messages.
-
-```text
-cd ros2_ws
-source install/setup.bash
-ros2 run rclrs_examples rclrs_subscriber &
-```
-
-You can then run either of the publisher apps:
+First start the subscriber:
 
 ```text
 cd ros2_ws
 source install/setup.bash
 
-# Run Rust in WASM!
+# Run the Rust subscriber in WASM!
 ros2 run ros2_rust_wasm ros2_rust_wasm -w \
-    ../ros2_wasm_app_rust/target/wasm32-unknown-unknown/release/ros2_wasm_app_rust.wasm
+    ../ros2_wasm_app_rust_subscriber/target/wasm32*/release/ros2_wasm_app_rust_subscriber.wasm &
+```
+
+Then run either of the publisher apps:
+
+```text
+cd ros2_ws
+source install/setup.bash
+
+# Run the Rust publisher in WASM!
+ros2 run ros2_rust_wasm ros2_rust_wasm -w \
+    ../ros2_wasm_app_rust/target/wasm32*/release/ros2_wasm_app_rust.wasm
 ```
 
 ```text
 cd ros2_ws
 source install/setup.bash
 
-# Run C++ in WASM!
+# Run the C++ publisher in WASM!
 ros2 run ros2_rust_wasm ros2_rust_wasm -w \
     ../ros2_wasm_app_cpp/build/ros2_wasm_app_cpp.wasm
+```
+
+You should get output similar to this:
+
+```text
+[INFO] This is NOT an Emscripten module!
+[TRACE] rn_get_default_context
+[TRACE] rn_create_node (0)
+[TRACE] rn_create_subscription (0)
+[TRACE] rn_node_spin
+...
+[INFO] This is NOT an Emscripten module!
+[TRACE] rn_get_default_context
+[TRACE] rn_create_node (0)
+[TRACE] rn_create_publisher (0)
+[TRACE] rn_std_msg_string_default
+[TRACE] rn_std_msg_string_set_data (0)
+[TRACE] rn_publish (0, 0)
+[TRACE] rn_thread_sleep
+[TRACE] rn_std_msg_string_get_data_len (0)
+[TRACE] rn_std_msg_string_get_data (0)
+[TRACE] rn_log
+[LOG] Hello Rust ROS! 0
+...
 ```
 
 ## Summary ##
