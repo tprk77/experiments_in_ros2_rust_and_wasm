@@ -142,6 +142,15 @@ ros2 run ros2_rust_wasm ros2_rust_wasm -w \
     ../ros2_wasm_app_cpp/build/ros2_wasm_app_cpp.wasm
 ```
 
+## Summary ##
+
+WASM allows for language agnostic apps. There are two apps, written in two
+different languages, written against the same API and targeting the same host.
+The apps are portable. They only need to be compiled once; they can run wherever
+the host can. Additionally, the apps are sandboxed. We can choose to expose only
+a very specific API, block syscalls, etc. There is also the potential to recover
+gracefully from app crashes.
+
 <!-- References -->
 
 [1]: https://rustup.rs/
