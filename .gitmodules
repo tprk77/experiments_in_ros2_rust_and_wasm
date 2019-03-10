@@ -13,3 +13,6 @@
 [submodule "ros2_ws/src/rosidl_defaults"]
 	path = ros2_ws/src/ros2/rosidl_defaults
 	url = git@github.com:ros2/rosidl_defaults.git
+[submodule "extern/emsdk"]
+	path = extern/emsdk
+	url = git@github.com:emscripten-core/emsdk.git
