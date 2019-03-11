@@ -53,14 +53,28 @@ If you haven't install Rust yet, you can do that easily with [`rustup`][1]!
 curl https://sh.rustup.rs -sSf | sh
 ```
 
-You will need to install ROS2. I recommend following the [instructions to install
-Debian packages][2]. Here's some summary commands:
+You may also need to enable the `wasm32-unknown-unknown` target.
 
 ```text
-sudo apt update && sudo apt install curl gnupg2 lsb-release
+rustup target add wasm32-unknown-unknown
+```
+
+You will also need to install Clang, `ros2_rust` requires it:
+
+```text
+sudo apt-get update
+sudo apt-get install clang-6.0
+```
+
+You will need to install ROS2. I recommend following the [instructions to
+install Debian packages][2]. Here's some summary commands:
+
+```text
+sudo sh -c 'echo "deb [arch=amd64,arm64] http://packages.ros.org/ros2/ubuntu `lsb_release -cs` main" \
+    > /etc/apt/sources.list.d/ros2-latest.list'
 curl http://repo.ros2.org/repos.key | sudo apt-key add -
-sudo apt update
-sudo apt install ros-crystal-desktop
+sudo apt-get update
+sudo apt-get install ros-crystal-desktop python3-colcon-common-extensions
 ```
 
 You will need to initialize and update all of the submodules in this repo. This
@@ -93,7 +107,7 @@ time. (I guess the issue has to do with CMake copying files for Cargo.)
 ```text
 cd ros2_ws
 source /opt/ros/crystal/setup.bash
-rm -rf build install log && colcon build
+rm -rf build install log && colcon build --packages-up-to ros2_rust_wasm
 ```
 
 You can then build the Rust apps:
