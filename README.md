@@ -2,11 +2,18 @@
 
 ## Overview ##
 
+This project implements the classic ROS "Hello World" publisher and subscriber,
+but with a few twists. First, this project is using the newer ROS2, as opposed
+to the more battle-tested ROS1. Second, it's written in Rust. Rust is a systems
+programming language like C++, but it's not commonly used with ROS. Lastly, the
+publisher and subscriber are compiled to WebAssembly (WASM). They are executed
+in a non-web embedding of a WASM runtime.
+
 This project attempts to combine ROS2, Rust, and WASM, to demonstrate the
-deployment of robotic WASM applications to a ROS2 enabled WASM runtime. This is
+deployment of robotic WASM applications to a ROS2-enabled WASM runtime. This is
 an _extremely_ early stage demo, with _unstable pre-alpha_ dependencies. I can't
-recommend using any of this in a production environment. But nevertheless, I
-think it's an interesting concept with great potential.
+recommend using this in a production environment. But nevertheless, I think it's
+an interesting concept with great potential.
 
 ## Organization ##
 
