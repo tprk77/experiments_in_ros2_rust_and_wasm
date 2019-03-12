@@ -1,4 +1,4 @@
-# Experiments in ROS2, Rust, and WASM #
+# Experiments in ROS2, Rust, and Wasm #
 
 ## Overview ##
 
@@ -6,26 +6,26 @@ This project implements the classic ROS "Hello World" publisher and subscriber,
 but with a few twists. First, this project is using the newer ROS2, as opposed
 to the more battle-tested ROS1. Second, it's written in Rust. Rust is a systems
 programming language like C++, but it's not commonly used with ROS. Lastly, the
-publisher and subscriber are compiled to WebAssembly (WASM). They are executed
-in a non-web embedding of a WASM runtime.
+publisher and subscriber are compiled to WebAssembly (Wasm). They are executed
+in a non-web embedding of a Wasm runtime.
 
-This project attempts to combine ROS2, Rust, and WASM, to demonstrate the
-deployment of robotic WASM applications to a ROS2-enabled WASM runtime. This is
+This project attempts to combine ROS2, Rust, and Wasm, to demonstrate the
+deployment of robotic Wasm applications to a ROS2-enabled Wasm runtime. This is
 an _extremely_ early stage demo, with _unstable pre-alpha_ dependencies. I can't
 recommend using this in a production environment. But nevertheless, I think it's
 an interesting concept with great potential.
 
 ## Organization ##
 
-**ROS2 WASM App:** `ros2_wasm_app_rust` and `ros2_wasm_app_cpp`
+**ROS2 Wasm App:** `ros2_wasm_app_rust` and `ros2_wasm_app_cpp`
 
-**ROS2 WASM Host:** `ros2_ws/src/ros2_rust_wasm`
+**ROS2 Wasm Host:** `ros2_ws/src/ros2_rust_wasm`
 
 The project is basically split into two parts, the app and the host. The app is
-a program that is compiled to WASM. It is written against a specific simplified
-ROS2 WASM API, which the host then needs to provide during the execution of the
-app. The host is a native program embedding a non-web WASM runtime, and provides
-the simplified ROS2 WASM API to the app. Because the host is essentially a ROS
+a program that is compiled to Wasm. It is written against a specific simplified
+ROS2 Wasm API, which the host then needs to provide during the execution of the
+app. The host is a native program embedding a non-web Wasm runtime, and provides
+the simplified ROS2 Wasm API to the app. Because the host is essentially a ROS
 node, it needs to be built as part of a ROS workspace.
 
 The project also has a few dependencies that are included as Git submodules:
@@ -38,7 +38,7 @@ accepted the corresponding pull request yet.
 
 **Wasmer:** `extern/wasmer`
 
-I'm using Wasmer for the non-web WASM runtime. I'm using my own fork, which
+I'm using Wasmer for the non-web Wasm runtime. I'm using my own fork, which
 allows for combining the ROS2 imports with Emscripten imports. That is not
 currently possible in the master branch. Unfortunately my fork is already out of
 date and will not be merged upstream. Wasmer is a very exciting project and is
@@ -47,7 +47,7 @@ under heavy, active development.
 **Emscripten:** `extern/emsdk`
 
 Emscripten is a pretty mature project, it's basically a C and C++ compiler that
-targets WASM. I'm using it to compile the C++ WASM app. Emscripten usually
+targets Wasm. I'm using it to compile the C++ Wasm app. Emscripten usually
 targets web browsers, but can be made to work with Wasmer. See the `Makefile` in
 `ros2_wasm_app_cpp` for details on how I do that.
 
@@ -145,7 +145,7 @@ First start the subscriber:
 cd ros2_ws
 source install/setup.bash
 
-# Run the Rust subscriber in WASM!
+# Run the Rust subscriber in Wasm!
 ros2 run ros2_rust_wasm ros2_rust_wasm -w \
     ../ros2_wasm_app_rust_subscriber/target/wasm32*/release/ros2_wasm_app_rust_subscriber.wasm &
 ```
@@ -156,7 +156,7 @@ Then run either of the publisher apps:
 cd ros2_ws
 source install/setup.bash
 
-# Run the Rust publisher in WASM!
+# Run the Rust publisher in Wasm!
 ros2 run ros2_rust_wasm ros2_rust_wasm -w \
     ../ros2_wasm_app_rust/target/wasm32*/release/ros2_wasm_app_rust.wasm
 ```
@@ -165,7 +165,7 @@ ros2 run ros2_rust_wasm ros2_rust_wasm -w \
 cd ros2_ws
 source install/setup.bash
 
-# Run the C++ publisher in WASM!
+# Run the C++ publisher in Wasm!
 ros2 run ros2_rust_wasm ros2_rust_wasm -w \
     ../ros2_wasm_app_cpp/build/ros2_wasm_app_cpp.wasm
 ```
@@ -196,7 +196,7 @@ You should get output similar to this:
 
 ## Summary ##
 
-WASM allows for language agnostic apps. There are two apps, written in two
+Wasm allows for language agnostic apps. There are two apps, written in two
 different languages, written against the same API and targeting the same host.
 The apps are portable. They only need to be compiled once; they can run wherever
 the host can. Additionally, the apps are sandboxed. We can choose to expose only
