@@ -106,15 +106,12 @@ Emscripten, but you should just ignore that.)
 
 ## Building ##
 
-You will need to build the ROS2 workspace with Colcon. Please be aware that the
-`ros2_rust` build tools are not really working correctly at the moment.
-Iterative builds will use stale sources, so you must do a clean build every
-time. (I guess the issue has to do with CMake copying files for Cargo.)
+You will need to build the ROS2 workspace with Colcon.
 
 ```text
 cd ros2_ws
 source /opt/ros/crystal/setup.bash
-rm -rf build install log && colcon build --packages-up-to ros2_rust_wasm
+colcon build --packages-up-to ros2_rust_wasm
 ```
 
 You can then build the Rust apps:
