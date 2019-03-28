@@ -60,7 +60,10 @@ fn main() {
         println!("[INFO] This is NOT an Emscripten module!");
         wasmer_runtime::ImportObject::new()
     };
-    let merged_import_object = wasmer_runtime::ImportObject::merge(ros_imports, em_import_object);
+    // Get a merged import object
+    let mut merged_import_object = wasmer_runtime::ImportObject::new();
+    merged_import_object.extend(ros_imports);
+    merged_import_object.extend(em_import_object);
     // Instantiate the module so that it can be run
     let mut instance = module.instantiate(&merged_import_object).unwrap();
     // We need to inject the data we want to use into the VM context. This code is adapted form
