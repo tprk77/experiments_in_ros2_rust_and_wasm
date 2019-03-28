@@ -1,6 +1,6 @@
 [submodule "extern/wasmer"]
 	path = extern/wasmer
-	url = git@github.com:tprk77/wasmer.git
+	url = git@github.com:wasmerio/wasmer.git
 [submodule "ros2_ws/src/ros2_rust"]
 	path = ros2_ws/src/ros2_rust
 	url = git@github.com:tprk77/ros2_rust.git
